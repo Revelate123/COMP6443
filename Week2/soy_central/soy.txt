@@ -1,0 +1,7 @@
+Found login credentials within the source code of login page:
+
+This gave non admin access when trying to access chadmin
+
+Cookie was JWT token.
+Header contained alg: 'HS256'
+and ischad was set to false

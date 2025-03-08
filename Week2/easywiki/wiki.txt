@@ -1,0 +1,7 @@
+Found hidden value 4e9800998ecf
+
+on clicking continue with quoccacorp it sends a resquest to quoccaid.quoccacorp.com with the /login?app=4e9800998ecf
+
+which redirects us back to easywiki with a token
+
+the token when decoded from hex does appear to contain admin which is the username I tried
