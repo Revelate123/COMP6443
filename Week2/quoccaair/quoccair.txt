@@ -1,0 +1,6 @@
+We literally just brute forced it?
+Seemed very easy for the points and stars assigned?
+
+code was 8509
+
+flag: COMP6443{f0ur_d1g1t_p1n5_4r3_qu35710nable_z5636887_lvxSjmr7gcceOKMmcrXk}

@@ -1,0 +1,9 @@
+Looking at session cookie, there was a secret_key contained in the flask JWT.
+
+Recreating our own flask app using the secret key, we were able to recreate a valid JWT with the data,
+{
+    "admin": True,
+    "secret_key": "$hallICompareTHEE2aSummersday
+}
+
+Using the newly generate session cookie, we were able to login as admin.

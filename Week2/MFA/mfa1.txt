@@ -1,0 +1,7 @@
+We find that when we register a new account, the MFA is generated via a call to an api with the account name and a secret.
+The secret is just the username encoded in base32.
+We call the api with admin and admin in base32 to get a MFA code, and then use that to login.
+
+For MFA v2.
+
+We just use the same session cookie used in MFA v1 and it works. lol. They should make everyone re do their MFA, legacy ones are vulnerable?
