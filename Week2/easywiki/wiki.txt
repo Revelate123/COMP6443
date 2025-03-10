@@ -5,3 +5,12 @@ on clicking continue with quoccacorp it sends a resquest to quoccaid.quoccacorp.
 which redirects us back to easywiki with a token
 
 the token when decoded from hex does appear to contain admin which is the username I tried
+
+realised thanks to chatgpt that maybe the 2b2b2b2b2b was padding and decoded to +++++
+so tried changing admin to melon and omg it worked.
+Logged in as melon.
+Tried every user listed on quoccaid and the last one TrashPanda has the flag. important the length of the string to be encoded
+remained the same.
+
+
+COMP6443{SSO_1S_SSO0O_E4SY_z5636887_dMl2Ez5Jgo-4At6sSiR_}
