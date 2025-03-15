@@ -1,0 +1,16 @@
+Clicked through until no more pages.
+
+IDOR to page 7 returned nothing. 
+
+But showed command used to access page.
+
+Tried path traversal, worked.
+
+Used bunch of ../../ .... /password.txt
+
+got password
+
+used on admin page
+
+return flag
+COMP6443{at_th15_point_we_sh0uld_abolish_php_z5636887_b49iEeWQ1oe8nGL3ZYgx}

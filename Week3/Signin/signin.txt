@@ -1,0 +1,9 @@
+Login credentials:
+z5636887@quoccacorp.com
+fowfmblu
+
+Logged in and got directed to home
+found some information
+looked at html and found link to separate sub domain qdns
+
+Using messwithdns thingy I can force the acocunt to re look up the DNS record on signin and it does appear to work.

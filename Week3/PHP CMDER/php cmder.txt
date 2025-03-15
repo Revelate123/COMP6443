@@ -1,0 +1,24 @@
+Presented with form field which does something
+
+Try random php code snips I find online. Does weird things, I don't know php.
+
+Then I try using ls. nothing.
+
+then I try putting a semi colon then ls
+
+bingo.
+
+there is a file called flag.txt.
+its a decoy.
+
+then I path traverse to root and see getpassword
+
+the admin page says it is an executable so I run the command
+
+; ./../../../../../getpassword
+
+and it returns the code
+
+which I used to get the flag.
+
+COMP6443{that5_n0t_a_testim0n1al_z5636887_UmwtJBzY-n1oOohcfmCO}
