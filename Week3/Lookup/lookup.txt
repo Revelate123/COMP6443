@@ -1,0 +1,22 @@
+Presented with search page, tried typing ' and " got an error.
+Tried backtick `, got error saying /bin/something
+so tried `ls` and it printed a list of things.
+No it didn't it always printed those.
+But it does print unexpected EOF when using a single " or ' or `
+This means it is probably search a file and does not find a match. 
+
+I think it filters out characters other than . and / by using a regex maybe
+
+; ../../*/[![] did this just work?
+
+ 07:15:19 up 34 days, 19:30,  0 user,  load average: 5.17, 4.75, 4.50
+USER     TTY      FROM             LOGIN@   IDLE   JCPU   PCPU WHAT
+
+This extra stuff was displayed
+
+../../../../ | ../../*/[![] This only displays the extra stuff.
+
+Okay, realised that I could use ? to match the number of chars and did 
+ | ../../*/??? ../../????
+
+COMP6443{NOT_ALL_DATABASES_ARE_SQL_z5636887_W56CLTup6A6HKPA-kaR-}

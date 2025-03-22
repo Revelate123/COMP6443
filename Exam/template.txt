@@ -1,0 +1,71 @@
+# COMP6[48]43 Midterm Exam
+
+Do NOT modify the heading structure of this markdown file.
+
+i.e. do not change the existing or create new lines of text starting with `#` or `=` (code comments within backtick (`) delimited code blocks are fine).
+
+Write your answer/writeup for each question under the corresponding heading. For challenges, if you find the flag, include the flag in full at the end of your writeup.
+
+This file should be submitted to Moodle as a text (.txt) file.
+
+Following the above instructions correctly will gain you two bonus marks (capped at 100% marks). All questions are worth 5 marks, for a total of 30 available.
+
+You are welcome (but not required) to use markdown formatting (see https://www.markdownguide.org/cheat-sheet/).
+
+Question 6 is designed to be very difficult and should only be attempted if you have solved/made good progress on the rest of the questions.
+
+## Question 1
+Looks just like MFA. I try admin admin and it works but now requires MFA. I'm going to try to register just like in the challenge. I intercept the request to proxy. I notice a JWT token but haven't investigated yet.
+The JWT contains username and mfa_check. When I post to the /register path it returns a link to a QR code with a secret ORXXA43FMNZGK5BRGIZQ
+I decode it from BASE32 and it says topsecret123.
+I create a new request replacing tom with admin https://api.qrserver.com/v1/create-qr-code/?size=400x400&data=otpauth://totp/mfa-v1:admin?secret=ORXXA43FMNZGK5BRGIZQ 
+I use the QR code to get my nonce and login using admin admin to get the flag.
+COMP6443{I_THOUGHT_IT_JUST_HAD_TO_BE_UNIQUE_z5636887_nfybI9CmBjjk6gDg2Lj4}
+## Question 2
+Another login form, I try entering ' and " to see if it errors and it does on '. SQLI probably the answer.
+Request probably looks something like this:
+SELECT username,password from users WHERE username = " " and password = "";
+Lets try ' OR 1=1; -- c
+Got cannot log in as more than one user. This means its probably returning multiple users as my request always return True
+Try ' OR 1=1 LIMIT 1; -- c
+Got You have been successfully logged into the Wensleydale factory.
+You've logged in successfully as TrashPanda but the flag is in another castle!
+Lets try OFFSET 1
+TRY ' OR 1=1 LIMIT 1 OFFSET 1; -- c Also wrong user. Lets write a script.
+I write a script and find it after like 9 or so users.
+COMP6443{welcome_to_the_wensleydale_cheese_factory_z5636887_kF8vnn6j7lhWrR9E7NqK}
+
+## Question 3
+Presented with a page immediately.
+Got auto logged in as zID but says need to be admin. I close the page and reopen with burpsuit intercepter on.
+I see that there is a session cookie with id=12. Simplest cookie ive ever seen. The only other piece of info I can think of would be
+my mTLS cert. I try changin the session_id. It works and changes the user. I think I may need another script though.
+Found the flag super quick again. Probably didn't need a script.
+COMP6443{id0r_in_sessions_z5636887_VHLmJwagW7JSy26zz11p}
+
+## Question 4
+- Password hash is not passed into cursor.exeute securely it is passed in via curly braces. This means if the password_hash can be overcome somehow,
+    then the statement is vulnerable to SQLI
+- Password uses sha1 which is an out of date hash function as it has been cryptographically broken according to Wikipedia.
+- The app is also in debug mode which allows an attacker to enumerate the application a lot as it sends logging statements. It could also potentially let an   
+    attacker access the debugger console which could give them RCE.
+-
+
+## Question 5
+presented with admin panel that appears to display whatever i type into the name form. I intercept the request and see that it also sends debug=false
+I change it to true before trying RCE. I send a request with random letters. and see that the there is a <code> html that says `/bin/echo &#34;Hello asda&#34; 2&gt;&amp;1`
+i think I can use echo to print stuff
+lets change this /bin/echo "Hello asda" 2>&1 to /bin/echo "ls -a" 2>&1 by sending ls -a, got Malicious data detected. It must be a WAF.
+I try URL encoding the statement but that doesn't work. 
+I think they pass my input into the quotes using a template, but I cannot send more quotes so I'm unable to break out of the statement.
+I also can't send a \. maybe I can mess with the debug statement instead.
+Okay i think adding `&#34;` works 
+`name=asd&#34;/bin/echo%20&#34test&#34;&debug=true` isn't quite working
+what about a carriage return. Nope.
+
+
+## Question 6
+presented with JWT. The jwt is signed with no payload data.
+I look at the source code and not the key.
+I think this is an RCE quesiton as there are bash commands in the code with my input passed in. 
+I

