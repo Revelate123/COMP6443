@@ -56,7 +56,7 @@ async def fetch_and_parse_urls(session ,user):
         ticket += 1
         flag = re.search(r"COMP6443\{.*?\}",html)
         if flag:
-            print(flag.group(0), user)
+            print(flag.group(0), user,ticket,data)
             return flag.group(0)
 
 chunk = 100
@@ -67,7 +67,7 @@ async def scrape_urls(start_user):
 
 def start_scrape_urls():
     results = []
-    i = 1
+    i = 9000
     while True:
         results.append(asyncio.run(scrape_urls(i)))
         i += chunk

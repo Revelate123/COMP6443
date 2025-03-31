@@ -7,3 +7,5 @@ found some information
 looked at html and found link to separate sub domain qdns
 
 Using messwithdns thingy I can force the acocunt to re look up the DNS record on signin and it does appear to work.
+
+When the reset password is issued I can alter the records to say whatever I want. I think I can use this for Local File Disclosure

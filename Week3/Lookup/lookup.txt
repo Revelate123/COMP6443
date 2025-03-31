@@ -20,3 +20,7 @@ Okay, realised that I could use ? to match the number of chars and did
  | ../../*/??? ../../????
 
 COMP6443{NOT_ALL_DATABASES_ARE_SQL_z5636887_W56CLTup6A6HKPA-kaR-}
+
+It is of the format 
+ls  Input  | strings
+ls ??| ../

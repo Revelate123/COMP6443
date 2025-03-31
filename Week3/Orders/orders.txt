@@ -1,0 +1,10 @@
+page source says there is /upload which doesn't work and is deprecated.
+
+Found robots.txt and it contained /portal and /extractor
+
+Using tar -czvf file.tar.gz ./tmp I create the zip file
+
+The upload lets me upload a file and host it at the addresses specified by the zip file contents
+
+By zipping an absolute path ../../../tmp/z5636887/password we are able to overwrite the
+existing password

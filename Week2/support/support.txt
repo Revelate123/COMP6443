@@ -1,0 +1,6 @@
+IDOR vulnerability.
+Tickets are base58 encoded 95:1
+
+Flags were located at:
+COMP6443{DDDDDDDDr0P_D@_Ba5e_z5636887_4WqSmPbR1Sfy5TpF8ipI} 1125 5 RVnSH2uR
+COMP6443{YoU_r3lLy_Wen7_D1ggiNG_HuH_z5636887_TT8kiW-3z2ciXZyyMSSG} 9447 2 VVBWU75i
